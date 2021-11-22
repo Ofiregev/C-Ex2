@@ -45,16 +45,16 @@ void input()
     }
     findShortest();
 
-    int p;
-    int q;
-    for (p = 0; p < n; p++)
-    {
-        for (q = 0; q < n; ++q)
-        {
-            printf("%d, ", matrix[p][q]);
-        }
-        printf("\n");
-    }
+    // int p;
+    // int q;
+    // for (p = 0; p < n; p++)
+    // {
+    //     for (q = 0; q < n; ++q)
+    //     {
+    //         printf("%d, ", matrix[p][q]);
+    //     }
+    //     printf("\n");
+    // }
 }
 
 void hasPath(int i, int j)
