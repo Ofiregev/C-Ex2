@@ -1,74 +1,85 @@
-#include<stdio.h>
+#include <stdio.h>
 #include "my_mat.h"
 #define n 10
- int findShortest(double matrix [n][n])
- 
- {
-     int i,j,k;
-for(k = 1; k < n; k++){
-    for(i = 1; i < n; i++){
-        for(j = 1; j < n; ++j){
-            matrix[i][j]=min(matrix[i][j],matrix[i][k]+matrix[k][j]);
- }
- }
-}
-return 0;
- }
-
-double min(double a, double b){
-    
-     return (a>b) ? b:a;
-}
-int input(double matrix[n][n])
+#define maxint 1000
+int matrix[n][n];
+void findShortest()
 {
-int input;
-int e,r;
-for(e = 1; e < n; e++){
-        for(r = 1; r < n; ++r){
-             scanf("%d", &input);
-// for(e = 0; e < n; e++){
-//     for(r = e+1; r <n;r++){
-  
-//     printf("Please enter element (%d, %d): ", e, r);
-    
-//     scanf("%d", &input);
-//     matrix[e][r] = input;
-//     matrix[r][e]=input;
-    
-}
-}
-findShortest(matrix);
-int p;
-int q;
-for(p = 0; p < n; p++){
-    for(q = 0; q < n; ++q){
-    printf("%f, ",matrix[p][q]); 
-}
-printf("\n");
+    int i, j, k;
+    for (k = 0; k < n; k++)
+    {
+        for (i = 0; i < n; i++)
+        {
+            for (j = 0; j < n; j++)
+            {
+                if(matrix[i][j]==0){
+                     matrix[i][j]=maxint;
+                }
+                matrix[i][j] = min(matrix[i][j], matrix[i][k] + matrix[k][j]);
+            }
+        }
+    }
 }
 
-return 0;
+int min(int a, int b)
+{
+
+    return (a > b) ? b : a;
 }
 
-int hasPath(double matrix[n][n],int i,int j){
+void input()
+{
 
-    if(matrix[i][j]!=0){
+    int e, r;
+    for (e = 0; e < n; e++)
+    {
+        for (r = 0; r < n; r++)
+        {
+            scanf("%d", &matrix[e][r]);
+            // for(e = 0; e < n; e++){
+            //     for(r = e+1; r <n;r++){
+
+            //     printf("Please enter element (%d, %d): ", e, r);
+
+            //     scanf("%d", &input);
+            //     matrix[e][r] = input;
+            //     matrix[r][e]=input;
+        }
+    }
+    findShortest();
+
+    // int p;
+    // int q;
+    // for (p = 0; p < n; p++)
+    // {
+    //     for (q = 0; q < n; ++q)
+    //     {
+    //         printf("%d, ", matrix[p][q]);
+    //     }
+    //     printf("\n");
+    // }
+}
+
+void hasPath(int i, int j)
+{
+
+    if (matrix[i][j] != 1000)
+    {
         printf("True\n");
-    }else
+    }
+    else
     {
         printf("False\n");
     }
-    return 0;
 }
-int shortestPath(double matrix[n][n],int i,int j)
+void shortestPath(int i, int j)
 {
-    if(matrix[i][j]!=0){
-        printf("%f",matrix[i][j]);
-    }else
+    if (matrix[i][j] != 1000)
     {
-        printf("-1");
+        printf("%d\n", matrix[i][j]);
     }
-    return 0;
+    else
+    {
+        printf("-1\n");
+    }
 }
-
-
